@@ -31,16 +31,16 @@ function reset_settings() {
   update_canvas(); // Draw the image in its new position
 }
 
-document.addEventListener('wheel', function (e) {
+/*document.addEventListener('wheel', function (e) {
   if (e.deltaY < 0) {
     zoom = zoom * 1.5;
   } else {
     zoom = zoom / 1.5;
   }
   update_canvas();
-}, false);
+}, false); */
 
-document.addEventListener('mousemove', function (e) {
+/* document.addEventListener('mousemove', function (e) {
   if (e.buttons > 0) {
     window.getSelection().empty();
     image_x = image_x + zoom * (mouse_x - e.clientX);
@@ -55,7 +55,7 @@ function get_distance(e) {
   var diffX = e.touches[0].clientX - e.touches[1].clientX;
   var diffY = e.touches[0].clientY - e.touches[1].clientY;
   return Math.sqrt(diffX * diffX + diffY * diffY); // Pythagorean theorem
-}
+} */
 
 document.addEventListener('touchstart', function (e) {
   if (e.touches.length > 1) { // if multiple touches (pinch zooming)
