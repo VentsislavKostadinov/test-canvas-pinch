@@ -57,30 +57,7 @@ function get_distance(e) {
   return Math.sqrt(diffX * diffX + diffY * diffY); // Pythagorean theorem
 } */
 
-let distance;
-let lastDistance = 0;
-let scale = 1;
-let scaleFactor = 1.1;
-let maxScale;
-let redraw;
-let scaleDraw;
-
-
-function scaleCanvasTouch() {
-    if (lastDistance > distance) {
-        scale = scale / scaleFactor;
-        if (scale < 1) scale = 1;
-    } else if (lastDistance < distance) {
-        scale = scale * scaleFactor;
-        if (scale > maxScale) scale = maxScale;
-    }
-
-    redraw = requestAnimationFrame(canvasDraw);
-
-    lastDistance = distance;
-}
-
-canvas.addEventListener('touchstart', function (e) {
+document.addEventListener('touchstart', function (e) {
   if (e.touches.length > 1) { // if multiple touches (pinch zooming)
     finger_dist = get_distance(e); // Save current finger distance
   } // Else just moving around
@@ -88,7 +65,7 @@ canvas.addEventListener('touchstart', function (e) {
   mouse_y = e.touches[0].clientY; //
 }, false);
 
-canvas.addEventListener('touchmove', function (e) {
+document.addEventListener('touchmove', function (e) {
   e.preventDefault(); // Stop the window from moving
   if (e.touches.length > 1) { // If pinch-zooming
     var new_finger_dist = get_distance(e); // Get current distance between fingers
@@ -104,7 +81,7 @@ canvas.addEventListener('touchmove', function (e) {
   //update_canvas(); // draw the new position
 }, false);
 
-canvas.addEventListener('touchend', function (e) {
+document.addEventListener('touchend', function (e) {
   mouse_x = e.touches[0].clientX;
   mouse_y = e.touches[0].clientY; // could be down to 1 finger, back to moving image
 }, false);
