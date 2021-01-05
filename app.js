@@ -57,7 +57,7 @@ function get_distance(e) {
   return Math.sqrt(diffX * diffX + diffY * diffY); // Pythagorean theorem
 } */
 
-document.addEventListener('touchstart', function (e) {
+mainCanvas.addEventListener('touchstart', function (e) {
   if (e.touches.length > 1) { // if multiple touches (pinch zooming)
     finger_dist = get_distance(e); // Save current finger distance
   } // Else just moving around
@@ -65,7 +65,7 @@ document.addEventListener('touchstart', function (e) {
   mouse_y = e.touches[0].clientY; //
 }, false);
 
-document.addEventListener('touchmove', function (e) {
+mainCanvas.addEventListener('touchmove', function (e) {
   e.preventDefault(); // Stop the window from moving
   if (e.touches.length > 1) { // If pinch-zooming
     var new_finger_dist = get_distance(e); // Get current distance between fingers
@@ -81,7 +81,7 @@ document.addEventListener('touchmove', function (e) {
   //update_canvas(); // draw the new position
 }, false);
 
-document.addEventListener('touchend', function (e) {
+mainCanvas.addEventListener('touchend', function (e) {
   mouse_x = e.touches[0].clientX;
   mouse_y = e.touches[0].clientY; // could be down to 1 finger, back to moving image
 }, false);
